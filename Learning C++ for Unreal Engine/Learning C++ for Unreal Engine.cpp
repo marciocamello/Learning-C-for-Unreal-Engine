@@ -294,6 +294,9 @@ int main()
 	// set the UserGuess to use on game
 	string UserGuess;
 
+	// get guess count tries
+	int GuessCount = 0;
+
 	// set a variable to continue/stop playing game state
 	bool ContinuePlaying = true;
 
@@ -315,6 +318,7 @@ int main()
 
 			// if correct congratulations the player and answer play again
 			cout << "You guessed correcty. Congratulations you won the game." << endl;
+			cout << "It took you " << GuessCount << " guesses to guess number" << endl;
 			cout << "Do you want to play again (y/n)?" << endl;
 
 			// set player again state y/n
@@ -327,6 +331,7 @@ int main()
 			if (playAgain == "y") {
 
 				NumberToGuess = rand() % 1000;
+				GuessCount = 0;
 			}
 			// if n show end game message and stop the game
 			else if (playAgain == "n") {
@@ -339,11 +344,13 @@ int main()
 		else if (UserNumber > NumberToGuess) {
 
 			cout << "My number is lower, please try again" << endl;
+			GuessCount++;
 		}
 		// if userNumber greater then numberToGuess
 		else if (UserNumber < NumberToGuess) {
 
 			cout << "My number is higher, please try again" << endl;
+			GuessCount++;
 		}
 	}
 
